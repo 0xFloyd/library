@@ -38,9 +38,6 @@ function getBookInfo(e) {
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let status = document.getElementById('status').checked;
-    console.log(status);
-    console.log(status.checked);
-    console.log(status.value);
     if (status == true) {
         status = "yes";
     } else {
