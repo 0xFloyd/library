@@ -37,7 +37,15 @@ function getBookInfo(e) {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let status = document.getElementById('status').value;
+    let status = document.getElementById('status').checked;
+    console.log(status);
+    console.log(status.checked);
+    console.log(status.value);
+    if (status == true) {
+        status = "yes";
+    } else {
+        status = "no";
+    }
     let book = new Book(title, author, pages, status);
     addBookToLibrary(book);
     //console.log(book.bookTitle, book.bookAuthor, book.bookPages, book.bookStatus);
@@ -48,9 +56,13 @@ function getBookInfo(e) {
     let cardBody = document.createElement('div');
     cardBody.className = 'card-body';
 
+    let cardNumber = document.createElement('h5');
+    cardNumber.className = 'card-title bookIndex';
+    cardNumber.innerText = "Book " + bookIndex;
+
     let cardTitle = document.createElement('h5');
-    cardTitle.className = 'card-title';
-    cardTitle.innerText = "Book " + bookIndex + ": " + '"' + title + '"';
+    cardTitle.className = 'card-title bookTitle';
+    cardTitle.innerText = '"' + title + '"';
 
     let cardAuthor = document.createElement('p');
     cardAuthor.className = 'card-text';
@@ -62,13 +74,15 @@ function getBookInfo(e) {
 
     let cardStatus = document.createElement('p');
     cardStatus.className = 'card-text';
-    cardStatus.innerText = "Read?: " + status;
+    cardStatus.innerText = "Read? " + status;
 
     let cardDelete = document.createElement('a');
     cardDelete.className = 'closeButton';
     cardDelete.innerText = 'Delete';
     cardDelete.setAttribute("href", "#");
+    cardDelete.addEventListener('click', deleteBook);
 
+    cardBody.appendChild(cardNumber);
     cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardAuthor);
     cardBody.appendChild(cardPages);
@@ -81,15 +95,9 @@ function getBookInfo(e) {
     formContents.reset();
 }
 
-/*
-    <div class="card w-100">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
- */ 
+function deleteBook (e) {
+    this.parentNode.parentNode.remove();
+}
 
 function addBookToLibrary(bookInput) {
    myLibrary.push(bookInput);
