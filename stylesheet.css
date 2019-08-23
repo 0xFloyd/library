@@ -1,0 +1,26 @@
+#formContainer {
+    display: none;
+}
+
+.closeButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+   
+}
+
+.card {
+    margin-top: 10px;
+    padding: 0px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-text {
+    line-height: .8;
+    padding: 0px;
+    margin-bottom: 15px;
+}

@@ -1,5 +1,5 @@
 let myLibrary = [];
-let rowId = 1;
+let bookId = 1;
 let libraryArray = document.getElementById('libraryHolder');
 let mainFormContainer = document.getElementById('formContainer');
 mainFormContainer.appendChild(libraryArray);
@@ -9,7 +9,7 @@ let formContents = document.getElementById('bookForm');
 formVisibilityButton.addEventListener('click', toggleForm);
 submitForm.addEventListener('submit', getBookInfo);
 formContents.addEventListener('submit', getBookInfo);
-let libraryTable = document.getElementById('libraryTable');
+let libraryContainer = document.getElementById('libraryHolder');
 
 
 function Book(bookTitle, bookAuthor, bookPages, bookStatus) {
@@ -21,18 +21,19 @@ function Book(bookTitle, bookAuthor, bookPages, bookStatus) {
 
 function toggleForm() {
     let x = mainFormContainer;
-    if (x.style.display === "none") {
-        x.style.display = "block";
+    if (x.style.display === "block") {
+        x.style.display = "none";
     } 
 
     else {
-        x.style.display = "none";
+        x.style.display = "block";
     }
     return;
 }
 
 function getBookInfo(e) {
     e.preventDefault();
+    let bookIndex = bookId;
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
@@ -41,22 +42,54 @@ function getBookInfo(e) {
     addBookToLibrary(book);
     //console.log(book.bookTitle, book.bookAuthor, book.bookPages, book.bookStatus);
     //libraryArray.innerHTML = "Title-" + '"' + book.bookTitle + '"' + " Author-" + '"' + book.bookAuthor + '"' + " Number of Pages-" + '"' + book.bookPages + '"' + " Book read-" + book.bookStatus;
-    let newRow = libraryTable.insertRow(-1);
-    let cell1 = newRow.insertCell(0);
-    let cell2 = newRow.insertCell(1);
-    let cell3 = newRow.insertCell(2);
-    let cell4 = newRow.insertCell(3);
-    let cell5 = newRow.insertCell(4);
-    let cell6 = newRow.insertCell(5);
-    cell1.innerHTML = rowId;
-    cell2.innerHTML = book.bookTitle;
-    cell3.innerHTML = book.bookAuthor;
-    cell4.innerHTML = book.bookPages;
-    cell5.innerHTML = book.bookStatus;
-    cell6.innerHTML = "delete";
-    rowId += 1;
+    let newCard = document.createElement('div');
+    newCard.className = "card w-100";
+
+    let cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+
+    let cardTitle = document.createElement('h5');
+    cardTitle.className = 'card-title';
+    cardTitle.innerText = "Book " + bookIndex + ": " + '"' + title + '"';
+
+    let cardAuthor = document.createElement('p');
+    cardAuthor.className = 'card-text';
+    cardAuthor.innerText = "Author: " + author;
+
+    let cardPages = document.createElement('p');
+    cardPages.className = 'card-text';
+    cardPages.innerText = "Pages: " + pages;
+
+    let cardStatus = document.createElement('p');
+    cardStatus.className = 'card-text';
+    cardStatus.innerText = "Read?: " + status;
+
+    let cardDelete = document.createElement('a');
+    cardDelete.className = 'closeButton';
+    cardDelete.innerText = 'Delete';
+    cardDelete.setAttribute("href", "#");
+
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardAuthor);
+    cardBody.appendChild(cardPages);
+    cardBody.appendChild(cardStatus);
+    cardBody.appendChild(cardDelete);
+    newCard.appendChild(cardBody);
+    libraryContainer.appendChild(newCard);
+
+    bookId += 1;
+    formContents.reset();
 }
 
+/*
+    <div class="card w-100">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+ */ 
 
 function addBookToLibrary(bookInput) {
    myLibrary.push(bookInput);

@@ -8,8 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link rel='stylesheet' href='stylesheet.css'>
 
     <title></title>
@@ -17,9 +18,7 @@
 
 <body>
     <div class='container'>
-        <div class="row">
-            <div class="col-xs-12 text-center">Library Genesis</div>
-        </div> 
+        <h1 class="text-center">Library Genesis</h1>
         <div class='row justify-content-center'>
             <div class='col text-center'>
                 <button type='submit' class='btn btn-primary' id='showForm'>New Book</button>
@@ -30,56 +29,47 @@
             <form id='bookForm' action=''>
                 <div>
                     <label for="title">Book Title:</label>
-                    <input type="text" class="form-control" id="title" name="title">
+                    <input type="text" class="form-control" id="title" name="title" required="true">
                 </div>
                 <div>
                     <label for="author">Author:</label>
-                    <input type="text" class="form-control" id="author" name="author">
+                    <input type="text" class="form-control" id="author" name="author" required="true">
                 </div>
                 <div>
                     <label for="pages">Pages:</label>
-                    <input type="text" class="form-control" id="pages" name="pages">
+                    <input type="text" class="form-control" id="pages" name="pages" required="true">
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="status" name='status'>
-                    <label class="form-check-label" for="status">I have read this book</label>
+                    <input type="checkbox" class="form-check-input" id="status" name='status' value='yes'>
+                    <label class="form-check-label" for="status">Have you read this book?</label>
                 </div>
                 <button type='submit' class='btn btn-primary' value='submit' id='formSubmit'>Add to Library</button>
             </form>
         </div>
+ 
         <div id='libraryHolder'></div>
-        <table class="table table-striped" id='libraryTable'>
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Pages</th>
-                    <th scope="col">Read?</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Harry Potter harry potter harry potter</td>
-                    <td>J.K. Rowling</td>
-                    <td>759</td>
-                    <td>Yes</td>
-                    <td>delete</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- 
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p>With supporting text below as a natural lead-in to additional content.</p>
+                 <p>With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="closeButton">Delete</a>
+            </div>
+        </div>
+        -->
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
 <script src='script.js'></script>
 </body>
 
